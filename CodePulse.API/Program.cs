@@ -1,5 +1,7 @@
 
 using CodePulse.API.Data;
+using CodePulse.API.Repositories.Implementations;
+using CodePulse.API.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodePulse.API
@@ -22,6 +24,8 @@ namespace CodePulse.API
 
             // connecting Dbcontext in program.cs and giving db connection string using sqlserver method() from EFCore
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection_url));
+
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             var app = builder.Build();
 
